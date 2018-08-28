@@ -1,0 +1,32 @@
+#sortable {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 210px;
+}
+
+    #sortable li {
+        margin: 0 5px 5px 5px;
+        padding: 5px;
+        font-size: 1.2em;
+        height: 2.5em;
+        line-height: 1.5em;
+        color: blue;
+    }
+
+.ui-state-highlight {
+    height: 1.5em;
+    line-height: 1.5em;
+    background-color: lemonchiffon;
+}
+
+.ui-state-default {
+    background-color: #ffffff;
+    border: 2px solid #0094ff;
+    background-image: url('../img/DragDrop_Icon.svg');
+    background-repeat: no-repeat;
+    padding-left: 65px !important;
+}
+    .ui-state-default:hover {
+        cursor: pointer;
+    }

@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="What is most important to you? Set your sequence of the criterias and we will show you where to live in Zurich.">
+    <title>Zurich's 5 - find your district</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="assets/css/Map-Clean.css">
+
+    <style>
+        #sortable {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+        }
+            #sortable li {
+                margin: 0 5px 5px 5px;
+                padding: 5px;
+                font-size: 1.2em;
+                height: 2.5em;
+                line-height: 1.5em;
+                color: blue;
+            }
+        .ui-state-highlight {
+            height: 1.5em;
+            line-height: 1.5em;
+            background-color: #f2f2f2;
+            border:0;
+        }
+        .ui-state-default {
+            background-color: #ffffff;
+            border: 2px solid #0000ff;
+            background-image: url('assets/img/DragDrop_Icon.svg');
+            background-repeat: no-repeat;
+            padding-left: 60px !important;
+        }
+            .ui-state-default:hover {
+                cursor: pointer;
+            }
+            .filterList{
+                margin-bottom:3em !important; min-width:200px !important; 
+            }
+
+        .rank {
+            display: inline-block;
+            color: #ff00ff;
+            height: 2em;
+            padding: 5px;
+            margin-bottom: 9px !important;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        @media screen and (max-width: 800px) {
+            #sortable {
+                width: 90%;
+            }
+        }
+
+        h1 {
+            margin-top:1em;
+            color: #ff00ff;
+            font-weight: bold;
+            font-size: 2.5em;
+        }
+        h2 {color:#ff00ff; font-size:2em; }
+        h3 {color:#0000ff; font-weight: bold;font-size: 2em;}
+        #doTheShow{display:none;}
+        .contImage{max-width:100%;}
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div class="map-clean">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="width:100%; margin-bottom:0;"><img src="assets/img/Zuerich5_Logo.svg" style="width:30%;"></h2>
+                <h2 class="text-center">your zurich's big 5</h2>
+                <p class="text-center">Sort the criteria to find your favorite living quarter in Zurich.<br /><a href="about.html">About</a> this hack.</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container filterBox">
+            <div class="row">
+                <div class="col-md-3 arrow">
+                    <div class="rank">Rank your preferences!</div>
+                    <ul id="sortable" class="filterList">
+                        <li id="amenities" class="ui-state-default">Amenities</li>
+                        <li id="diversity" class="ui-state-default">Diversity</li>
+                        <li id="environment" class="ui-state-default">Environment</li>
+                        <li id="living" class="ui-state-default">Living</li>
+                        <li id="culture" class="ui-state-default">Culture</li>
+                    </ul>
+                </div>
+                <div class="col-md-9 map"><div onclick="doTheShowTheImage()" id="sszvis-chart"></div></div>
+                <!--<div class="col-md-9 map"><img onclick="doTheShowTheImage()" src="assets/img/Zurich-quarter-map.png" width="90%"></div>-->
+            </div>
+            <div class="row" id="doTheShow">
+                <div class="col-md-12">
+                    <h1>Escher Wyss quarter</h1>
+                    <h2>Kreis 5</h2>
+                    <p>
+                        Escher Wyss ist ein Quartier in der Schweizer Stadt Zürich im Stadtkreis 5 (Industriequartier).
+                        Im Norden bildet die Limmat die Grenze des Quartiers. Nach Osten wird er durch den Eisenbahn-Viadukt der
+                        Wipkinger-Linie und im Süden durch die Bahngleise begrenzt.
+                    </p>
+                    <p>
+                        Im Westen endet das Quartier kurz hinter dem Fussballstadion Hardturm.
+                    </p>
+                </div>
+                <img class="contImage" src="assets/img/Escher-Wyss-quarter-detail.png" />
+            </div>
+        </div>
+    </div>
+    <div class="footer-basic">
+        <footer>
+            <div class="social"><a href="https://twist2018.slack.com" target="_blank"><i class="fab fa-slack-hash"></i></a><a href="https://twitter.com/twist2018" target="_blank"><i class="icon ion-social-twitter"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"></li>
+                <li class="list-inline-item"></li>
+                <li class="list-inline-item"><a href="#">home&nbsp;</a><a href="about.html">&nbsp;about</a></li>
+                <li class="list-inline-item"></li>
+                <li class="list-inline-item"></li>
+            </ul>
+            <p class="copyright">©&nbsp;<a href="https://www.twist2018.ch" target="_blank">Twist2018<br></a></p>
+        </footer>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-ui.min.js"></script>
+    <script src="assets/js/jqPunch.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <link href="sszvis.css" rel="stylesheet">
+    <script src="assets/js/d3.min.js"></script>
+    <script src="assets/js/topojson-client.min.js"></script>
+    <script src="sszvis.js"></script>
+    <script src="zurichMap.js"></script>
+    <script>
+        $(function () {
+            $("#sortable").sortable({
+                placeholder: "ui-state-highlight",
+                stop: function (e, ui) {
+                    var newSortedList = $.map($(this).find('li'), function (el) {
+                        return $(el).attr('id');
+                    });
+                    changeTheMap(newSortedList);
+                }
+            });
+            $("#sortable").disableSelection();
+        });
+
+        /*** SEQUENCE HAS CHANGED => UPDATE THE MAP *******************************************/
+        function changeTheMap(sorTwist) {
+            console.log(sorTwist); // selected sequence p.e. ["amenities", "environment", "diversity", "living", "culture"];
+            //console.log(sorTwist[0]); console.log(sorTwist[1]); .....
+            if (sorTwist[0] == 'amenities') zurichMap('data1.csv');
+            else if (sorTwist[0] == 'environment') zurichMap('data2.csv');
+            else if (sorTwist[0] == 'diversity') zurichMap('data3.csv');
+            else if (sorTwist[0] == 'living') zurichMap('data4.csv');
+            else if (sorTwist[0] == 'culture') zurichMap('data5.csv');
+        }
+        /**************************************************************************************/
+
+        function doTheShowTheImage() {
+            document.getElementById("doTheShow").style.display = "inline-block";
+            $('html, body').animate({ scrollTop: 680 }, 'slow');
+        }
+
+    </script>
+</body>
+
+</html>
