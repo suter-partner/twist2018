@@ -1,11 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="What is most important to you? Set your sequence of the criterias and we will show you where to live in Zurich.">
-    <title>Zurich's 5 - find your district</title>
+    <title>Zurich's big 5 - find your district</title>
+    <link rel="icon" type="image/x-icon" href="https://su-pa.net/favicon.ico">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
@@ -68,7 +69,7 @@
             margin-top:1em;
             color: #ff00ff;
             font-weight: bold;
-            font-size: 2.5em;
+            font-size: 2em;
         }
         h2 {color:#ff00ff; font-size:2em; }
         h3 {color:#0000ff; font-weight: bold;font-size: 2em;}
@@ -83,8 +84,9 @@
         <div class="container">
             <div class="intro">
                 <h2 class="text-center" style="width:100%; margin-bottom:0;"><img src="assets/img/Zuerich5_Logo.svg" style="width:30%;"></h2>
-                <h2 class="text-center">your zurich's big 5</h2>
-                <p class="text-center">Sort the criteria to find your favorite living quarter in Zurich.<br /><a href="about.html">About</a> this hack.</p>
+                <h2 class="text-center">your Zurich's big 5</h2>
+                <p class="text-center">Sort the criteria to find your favorite living quarter in <a href="https://en.wikipedia.org/wiki/Escher_Wyss_(Z%C3%BCrich)">Zurich</a> 
+                    (only the first has an impact). Note the explanations in the <a href="about.html">about this hack</a> page.</p>
             </div>
         </div>
     </div>
@@ -101,24 +103,28 @@
                         <li id="culture" class="ui-state-default">Culture</li>
                     </ul>
                 </div>
-                <div class="col-md-9 map"><div onclick="doTheShowTheImage()" id="sszvis-chart"></div></div>
-                <!--<div class="col-md-9 map"><img onclick="doTheShowTheImage()" src="assets/img/Zurich-quarter-map.png" width="90%"></div>-->
+                <div class="col-md-9 map"><div id="sszvis-chart" onclick="doTheShowTheImage()" ontouchstart="doTheShowTheImage()"></div></div>
             </div>
-            <div class="row" id="doTheShow">
-                <div class="col-md-12">
-                    <h1>Escher Wyss quarter</h1>
-                    <h2>Kreis 5</h2>
-                    <p>
-                        Escher Wyss ist ein Quartier in der Schweizer Stadt Zürich im Stadtkreis 5 (Industriequartier).
-                        Im Norden bildet die Limmat die Grenze des Quartiers. Nach Osten wird er durch den Eisenbahn-Viadukt der
-                        Wipkinger-Linie und im Süden durch die Bahngleise begrenzt.
-                    </p>
-                    <p>
-                        Im Westen endet das Quartier kurz hinter dem Fussballstadion Hardturm.
-                    </p>
-                </div>
-                <img class="contImage" src="assets/img/Escher-Wyss-quarter-detail.png" />
-            </div>
+            <div class="container row text-center" id="doTheShow">
+                <details>
+                    <summary style="font-size:1.2em;margin-top:1.2em">Example data Escher Wyss (static) <span style="font-size:0.8em;">[click to open]</span></summary>
+                    <div class="col-md-12">
+                        <h1>Escher Wyss quarter</h1>
+                        <h2>Kreis 5</h2>
+                        <p>
+                            <a href="https://de.wikipedia.org/wiki/Escher-Wyss-Platz">Escher Wyss</a> ist ein Quartier in der 
+                            Schweizer <a href="https://de.wikipedia.org/wiki/Z%C3%BCrich">Stadt Zürich</a> im Stadtkreis 5, das sog.
+                                <a href="https://de.wikipedia.org/wiki/Industriequartier">Industriequartier</a>.
+                            Im Norden bildet die Limmat die Grenze des Quartiers. Nach Osten wird er durch den Eisenbahn-Viadukt der
+                            Wipkinger-Linie und im Süden durch die Bahngleise begrenzt.
+                        </p>
+                        <p>Im Westen endet das Quartier kurz hinter dem Fussballstadion <a href="https://en.wikipedia.org/wiki/Hardturm">Hardturm</a>.</p>
+                    </div>
+                    <img class="contImage" src="assets/img/Escher-Wyss-quarter-detail.png" />
+                    <br>
+                    Note the explanations on the <a href="about.html">about «Zurich's big 5»</a> page                    
+                </details>
+            </div>            
         </div>
     </div>
     <div class="footer-basic">
@@ -130,8 +136,7 @@
                 <li class="list-inline-item"><a href="#">home&nbsp;</a><a href="about.html">&nbsp;about</a></li>
                 <li class="list-inline-item"></li>
                 <li class="list-inline-item"></li>
-            </ul>
-            <p class="copyright">©&nbsp;<a href="https://www.stadt-zuerich.ch/portal/de/index/ogd/anwendungen/2018/TWIST2018.html" target="_blank">Twist2018<br></a></p>
+            </ul>            
         </footer>
     </div>
     <script src="assets/js/jquery.min.js"></script>
@@ -158,6 +163,8 @@
             $("#sortable").disableSelection();
         });
 
+
+
         /*** SEQUENCE HAS CHANGED => UPDATE THE MAP *******************************************/
         function changeTheMap(sorTwist) {
             console.log(sorTwist); // selected sequence p.e. ["amenities", "environment", "diversity", "living", "culture"];
@@ -168,14 +175,18 @@
             else if (sorTwist[0] == 'living') zurichMap('data4.csv');
             else if (sorTwist[0] == 'culture') zurichMap('data5.csv');
         }
-        /**************************************************************************************/
 
+        /*** ON CLICK/TOUCH SHOW EXAMPLE DATA (AS AN IMAGE) *************************/
         function doTheShowTheImage() {
-            document.getElementById("doTheShow").style.display = "inline-block";
-            $('html, body').animate({ scrollTop: 680 }, 'slow');
+            var elData = document.getElementById("doTheShow");
+	    if(window.getComputedStyle(document.querySelector('#doTheShow')).display!="inline-block"){
+            	elData.style.display = "inline-block";
+            	$('html, body').animate({ scrollTop: 680 }, 'slow');
+	    }
         }
 
     </script>
+    <script src="https://su-pa.net/wikiPrevBox/wikiPreviewBox.min.js"></script>
 </body>
 
 </html>
